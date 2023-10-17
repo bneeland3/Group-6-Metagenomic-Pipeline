@@ -7,3 +7,4 @@ Steps:
 2. Uploaded TSV files to doc for later download
 3. Created src and doc files
 4. created environment.yml <-- is unfinished
+5. created main.yml <-- is unfinished 
