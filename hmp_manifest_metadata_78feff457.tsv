@@ -1,0 +1,11 @@
+sample_id	subject_id	subject_uuid	sample_body_site	visit_number	subject_gender	subject_race	study_full_name	project_name
+faab18e1a137731cffda882560fe189c	246515023	faab18e1a137731cffda882560041c2a	external naris	3	female	None	Healthy Human Subjects	Human Microbiome Project (HMP)
+faab18e1a137731cffda882560fdf73f	246515023	faab18e1a137731cffda882560041c2a	dorsum of tongue	3	female	None	Healthy Human Subjects	Human Microbiome Project (HMP)
+faab18e1a137731cffda882560c1fd3b	764346198	faab18e1a137731cffda882560077ad4	palatine tonsil	2	female	None	Healthy Human Subjects	Human Microbiome Project (HMP)
+faab18e1a137731cffda8825602df37c	763961826	faab18e1a137731cffda882560070241	throat	1	male	None	Healthy Human Subjects	Human Microbiome Project (HMP)
+1419f08f554e0c93f3b62fe90c0bc9a6	3002	1419f08f554e0c93f3b62fe90c0132d0	feces	13	female	caucasian	Inflammatory Bowel Disease Multi-omics Database (IBDMDB)	Integrative Human Microbiome Project
+faab18e1a137731cffda8825607b9a6d	158802708	faab18e1a137731cffda88256000cbcc	buccal mucosa	2	male	None	Healthy Human Subjects	Human Microbiome Project (HMP)
+faab18e1a137731cffda8825602bd882	763577454	faab18e1a137731cffda88256006a2da	portion of saliva	1	female	None	Healthy Human Subjects	Human Microbiome Project (HMP)
+faab18e1a137731cffda8825602be6d0	763577454	faab18e1a137731cffda88256006a2da	buccal mucosa	1	female	None	Healthy Human Subjects	Human Microbiome Project (HMP)
+faab18e1a137731cffda8825602c2914	763577454	faab18e1a137731cffda88256006a2da	posterior fornix of vagina	1	female	None	Healthy Human Subjects	Human Microbiome Project (HMP)
+faab18e1a137731cffda8825603159ac	763577454	faab18e1a137731cffda88256006a2da	gingiva	2	female	None	Healthy Human Subjects	Human Microbiome Project (HMP)
