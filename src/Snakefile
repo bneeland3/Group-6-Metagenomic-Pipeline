@@ -1,7 +1,43 @@
+def read_samples(file_name):
+    sample = []
+    with open(file_name) as f:
+      for l in f:
+        countries.append(l.rstrip())
+    return sample
+
 rule all:
+  input:
+    expand('{sample}.??', samples=read_samples('sample.??'))
 
 rule dowload_data:
   output:
     'Agrofood_co2_emission.csv'
   shell:
     'wget -O {output} "https://docs.google.com/uc?export=download&id=1Wytf3ryf9EtOwaloms8HEzLG0yjtRqxr"'
+
+#rule fastqc1
+
+#rule multiqc1
+
+rule trimmomatic:
+  input:
+    'samples'
+  output:
+
+  shell: 
+    """
+    #!/bin/bash
+
+    for infile in *; do
+    base=$(basename ${infile} _R1_001.trimmed.fastq.gz)
+    echo "Running sample ${base}"
+
+    echo "Trimmomatic for ${base}"
+    trimmomatic PE -threads 10 -trimlog trimmed_output/${base}.trimlog -summary trimmed_output/${base}.trim.log -validatePairs ${base}_R1_001.fastq.gz ${base}_R2_001.fastq.gz -baseout trimmed_output/${base}.trimmed SLIDINGWINDOW:4:20 LEADING:20 TRAILING:20 MINLEN:50
+    done
+    """
+
+#rule fastqc2
+
+#rule multiqc2
+
