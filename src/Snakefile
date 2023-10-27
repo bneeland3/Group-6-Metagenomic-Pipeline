@@ -2,29 +2,59 @@ def read_samples(file_name):
     sample = []
     with open(file_name) as f:
       for l in f:
-        countries.append(l.rstrip())
+        sample.append(l.rstrip())
     return sample
 
 rule all:
   input:
-    expand('{sample}.??', samples=read_samples('sample.??'))
+    expand('{sample}.html', samples=read_samples('eg_sample_names.txt'))
+    expand('{sample}.txt', samples=read_samples('eg_sample_names.txt'))
 
 rule dowload_data:
   output:
-    'Agrofood_co2_emission.csv'
-  shell:
-    'wget -O {output} "https://docs.google.com/uc?export=download&id=1Wytf3ryf9EtOwaloms8HEzLG0yjtRqxr"'
+    "../doc/data/{x}.denovo_duplicates_marked.trimmed.1.fastq",
+    "../doc/data/{X}.denovo_duplicates_marked.trimmed.2.fastq"
 
-#rule fastqc1
+  shell:
+  """
+  cd ../doc/data
+  'wget -O {output} "https://drive.google.com/drive/folders/1IkvxeZehenan4G-lhmpjBhJ0CBqIbTd9?usp=drive_link"'
+  """
+
+rule set_samples:
+  input: 
+
+  output:
+
+  shell:
+
+  """
+  python quality_utils.py read_samples 
+  """
+
+
+rule fastqc1
+  input: 
+    reads=["{sample}.denovo_duplicates_marked.trimmed.1.fastq",
+    "{sample}.denovo_duplicates_marked.trimmed.2.fastq"]
+  output:
+    #'{sample}.html'
+    multitext("{sample}.html", "{sample}.txt")
+  shell:
+  """
+  cd ../doc/data
+  bash fastqc.sh
+
+  """
 
 #rule multiqc1
 
-rule trimmomatic:
-  input:
-    'samples'
-  output:
+#rule trimmomatic:
+#  input:
+#   'samples'
+#  output:
 
-  shell: 
+#  shell: 
     """
     #!/bin/bash
 

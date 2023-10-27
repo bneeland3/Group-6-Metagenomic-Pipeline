@@ -1,0 +1,2 @@
+SRS014466.denovo_duplicates_marked.trimmed.1.fastq
+SRS014466.denovo_duplicates_marked.trimmed.2.fastq
