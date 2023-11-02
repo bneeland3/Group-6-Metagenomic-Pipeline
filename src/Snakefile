@@ -5,9 +5,9 @@ from os.path import split
 from glob import glob
 SAMPLES = set()
 PREFIX = "/pl/active/ADOR/projects/mothersmilk/chla_data_transfer/fastq/fastq/"
-with open("peta_new.txt", "r") as file:
+with open('samples.txt', "r") as file:
     for line in file:
-        sample = line.strip() # sample is the line without any whitespace
+        sample = line.rstrip() # sample is the line without any whitespace
         if len(sample) > 0: # if the sample string is not empty ...
             # Want to see if the files exist before we add them
             rel_files = glob(PREFIX + sample.split('_')[0] + "*") # Note, * is a wildcard, matches anything
@@ -21,8 +21,8 @@ SAMPLES = list(SAMPLES) # Cast the set to a list so snakemake can "expand" it
 
 rule all:
     input:
-        expand("../doc/data/{sample}", sample=SAMPLES)
-
+        expand("../doc/data/{sample}", sample=SAMPLES), 
+        
 
 rule dowload_data:
   output:
@@ -30,92 +30,40 @@ rule dowload_data:
     "../doc/data/{x}.denovo_duplicates_marked.trimmed.2.fastq"
 
   shell:
-  """
-  cd ../doc/data
-  'wget -O {output[0]} "https://drive.google.com/drive/folders/1IkvxeZehenan4G-lhmpjBhJ0CBqIbTd9?usp=drive_link"',
-  'wget -O {output[1]} "https://drive.google.com/drive/folders/1IkvxeZehenan4G-lhmpjBhJ0CBqIbTd9?usp=drive_link"'
-  
-  """
+    '''
+    wget -O {output[0]} "https://drive.google.com/drive/folders/1IkvxeZehenan4G-lhmpjBhJ0CBqIbTd9?usp=drive_link" 
+    wget -O {output[1]} "https://drive.google.com/drive/folders/1IkvxeZehenan4G-lhmpjBhJ0CBqIbTd9?usp=drive_link"
+    '''
 
 
 rule fastqc_1:
     input:
-        FORWARD=f"../doc/data/{sample}}_1.fq.gz",
+        FORWARD=f"../doc/data/{{sample}}_1.fq.gz",
         REVERSE=f"../doc/data/{{sample}}_2.fq.gz"
     output:
-        directory(f"../doc/data/fastqc_1/{{sample}}")
+        directory(f"../doc/data/fastqc_1/{{sample}}.zip")
     conda:
-        "fastqc_env"
+        "fastqc"
     # resources:
         # Cluster from Ryan!
         
     # threads: 16
     shell:
         """
-        mkdir -p 
-        mkdir -p 
         mkdir -p {output}
         fastqc --threads 10 {input.FORWARD} {input.REVERSE} -o {output} 
         """
 
-
-rule fastqc1
-  for infile in *.denovo_duplicates_marked.trimmed.1.fastq; do
-    base=$(basename ${infile} .denovo_duplicates_marked.trimmed.1.fastq)
-    echo "Running sample ${base}"
-
-    R1="${reads[0]}"
-    R2="${reads[1]}"
-
-    echo "FASTQC 1 for ${base}"
-    fastqc ${R1} ${R2} -o "${snakemake_output[0]}"
-  done
-
-  input: 
-    reads=["{sample}.denovo_duplicates_marked.trimmed.1.fastq",
-    "{sample}.denovo_duplicates_marked.trimmed.2.fastq"]
-  output:
-    #'{sample}.html'
-    multitext("{sample}.html", "{sample}.txt")
-  shell:
-  """
-  cd ../doc/data
-  bash fastqc.sh
-
-  """
-
-#rule multiqc1
-
-#rule trimmomatic:
-#  input:
-#   'samples'
-#  output:
-
-#  shell: 
-    """
-    #!/bin/bash
-
-    for infile in *; do
-    base=$(basename ${infile} _R1_001.trimmed.fastq.gz)
-    echo "Running sample ${base}"
-
-    echo "Trimmomatic for ${base}"
-    trimmomatic PE -threads 10 -trimlog trimmed_output/${base}.trimlog -summary trimmed_output/${base}.trim.log -validatePairs ${base}_R1_001.fastq.gz ${base}_R2_001.fastq.gz -baseout trimmed_output/${base}.trimmed SLIDINGWINDOW:4:20 LEADING:20 TRAILING:20 MINLEN:50
-    done
-    """
-
-#rule fastqc2
-    #   for infile in *.denovo_duplicates_marked.trimmed.1.fastq; do
-    base=$(basename ${infile} .denovo_duplicates_marked.trimmed.1.fastq)
-    echo "Running sample ${base}"
-
-    R1="${reads[0]}"
-    R2="${reads[1]}"
-
-    echo "FASTQC 1 for ${base}"
-    fastqc ${R1} ${R2} -o "${snakemake_output[0]}"
-  done
-
-
-#rule multiqc2
-
+rule multiqc_1:
+    input:
+        '../doc/data/{{sample}}'
+    output:
+        '../doc/data/multiqc_1/{multiqc_report}'
+    conda:
+        'multiq'
+    # resources:
+    shell:
+        '''
+        mkdir -p {output} 
+        multiqc {input} -o {output} 
+        '''
