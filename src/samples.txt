@@ -1,0 +1,8 @@
+SRS014466.denovo_duplicates_marked.trimmed.1.fastq
+SRS014466.denovo_duplicates_marked.trimmed.2.fastq
+SRS014472.denovo_duplicates_marked.trimmed.1.fastq
+SRS014472.denovo_duplicates_marked.trimmed.2.fastq
+SRS023534.denovo_duplicates_marked.trimmed.1.fastq
+SRS023534.denovo_duplicates_marked.trimmed.2.fastq
+SRS024301.denovo_duplicates_marked.trimmed.1.fastq
+SRS024301.denovo_duplicates_marked.trimmed.2.fastq
