@@ -26,14 +26,11 @@ rule all:
 
 rule dowload_data:
   output:
-    "../doc/data/{x}.denovo_duplicates_marked.trimmed.1.fastq",
-    "../doc/data/{x}.denovo_duplicates_marked.trimmed.2.fastq"
+    "data/SRS014466.zip",
 
   shell:
-    '''
-    wget -O {output[0]} "https://drive.google.com/drive/folders/1IkvxeZehenan4G-lhmpjBhJ0CBqIbTd9?usp=drive_link" 
-    wget -O {output[1]} "https://drive.google.com/drive/folders/1IkvxeZehenan4G-lhmpjBhJ0CBqIbTd9?usp=drive_link"
-    '''
+    'wget "https://drive.google.com/uc?id=1CroHxgM6em1vpJDQQXW0nMfZI81fUWGy&export=download"'
+ 
 
 
 rule fastqc_1:
