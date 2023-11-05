@@ -1,46 +1,57 @@
-import pandas as pd
+#import pandas as pd
 from os.path import join as pj
 from os.path import split
 
-from glob import glob
-SAMPLES = set()
-PREFIX = "/pl/active/ADOR/projects/mothersmilk/chla_data_transfer/fastq/fastq/"
-with open('samples.txt', "r") as file:
-    for line in file:
-        sample = line.rstrip() # sample is the line without any whitespace
-        if len(sample) > 0: # if the sample string is not empty ...
-            # Want to see if the files exist before we add them
-            rel_files = glob(PREFIX + sample.split('_')[0] + "*") # Note, * is a wildcard, matches anything
-            if len(rel_files) > 0:
-                # If files exist then likely fastqc worked and we can use this one
-                # Otherwise, it must have been one of those messed up gzips, hence why
-                # there are no files for us to apply fastqc to in the first place.
-                SAMPLES.add(sample)
-SAMPLES = list(SAMPLES) # Cast the set to a list so snakemake can "expand" it
+#from glob import glob
+#SAMPLES = set()
+#PREFIX = "src/samples.txt"
+#with open('samples.txt', "r") as file:
+#    for line in file:
+#        sample = line.rstrip() # sample is the line without any whitespace
+#        if len(sample) > 0: # if the sample string is not empty ...
+#           # Want to see if the files exist before we add them
+#            rel_files = glob(PREFIX + sample.split('.')[0] + "*") # Note, * is a wildcard, matches anything
+#            if len(rel_files) > 0:
+#                # If files exist then likely fastqc worked and we can use this one
+#                # Otherwise, it must have been one of those messed up gzips, hence why
+#                # there are no files for us to apply fastqc to in the first place.
+#                SAMPLES.add(sample)
+#SAMPLES = list(SAMPLES) # Cast the set to a list so snakemake can "expand" it
 
+def read_samples(file_name):
+    sample = []
+    with open(file_name) as f:
+      for l in f:
+        countries.append(l.rstrip())
+    return sample
 
 rule all:
     input:
-        expand("../doc/data/{sample}", sample=SAMPLES), 
+        expand(f"../doc/data/fastqc_1/{{sample}}.zip"), 
         
 
-rule dowload_data:
-  output:
-    "data/SRS014466.zip",
+#rule download_data:
+#  output:
+#    "../doc/data/SRS014466.denovo_duplicates_marked.trimmed.1.fastq.gz", 
+#    "../doc/data/SRS014466.denovo_duplicates_marked.trimmed.2.fastq.gz"
 
-  shell:
-    'wget "https://drive.google.com/uc?id=1CroHxgM6em1vpJDQQXW0nMfZI81fUWGy&export=download"'
- 
+#  shell:
+#    """
+#    mkdir -p ../doc/data/
+#    cd ../doc/data/
+#    wget "https://drive.google.com/uc?id=11oVlLFy2M4vZou6mlq02vcwaLknFexWd&export=download"
+#    wget "https://drive.google.com/uc?id=1c8bXKesFJ7pDeM29-K2iUv3ZvUtqxlyU&export=download"
+#    """
 
 
 rule fastqc_1:
     input:
-        FORWARD=f"../doc/data/{{sample}}_1.fq.gz",
-        REVERSE=f"../doc/data/{{sample}}_2.fq.gz"
+        FORWARD=f"../doc/data/{{sample}}.1.fastq.gz",
+        REVERSE=f"../doc/data/{{sample}}.2.fastq.gz"
     output:
         directory(f"../doc/data/fastqc_1/{{sample}}.zip")
     conda:
-        "fastqc"
+        "../env/fastqc"
     # resources:
         # Cluster from Ryan!
         
@@ -57,7 +68,7 @@ rule multiqc_1:
     output:
         '../doc/data/multiqc_1/{multiqc_report}'
     conda:
-        'multiq'
+        '../env/fastqc'
     # resources:
     shell:
         '''
