@@ -1,5 +1,9 @@
 # Group-6-Metagenomic-Pipeline
 
+Metagenomic sequencing is a method used in the field of genomics to study genetic material recovered directly from environmental or clinical samples. It involves the sequencing of nucleotide sequences isolated from all the organisms present in a given sample. Because of its ability to reveal the previously hidden diversity of microscopic life, metagenomics offers a powerful way of understanding the microbial world that might revolutionize understanding of biology... HOWEVER:
+
+Metagenomic data processing and utilization requires complex bioinformatic tools. This pipeline is aimed at simplifying the initial steps of metagenomic sequence quality screening, trimmiming and removal of host contamination. 
+
 # Installation:
     1. Clone repository 
     2. Find the doc/data repository
@@ -9,7 +13,7 @@
       --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
     4. From this point you can run the SnakeFile using:
-       snakemake -c1
+       snakemake -c1 --use-conda
 
 # Updates:
     10/17/23: 
