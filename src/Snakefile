@@ -25,7 +25,7 @@ rule fastqc:
     output:
         html="../doc/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html",
         zip="../doc/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.zip"
-    conda: "fastqc"
+    conda: "env/fastqc.yaml"
     shell:
         """
         mkdir -p ../doc/fastqc1_results
@@ -38,7 +38,7 @@ rule multiqc:
     output:
         html="../doc/fastqc1_results/multiqc_report.html",
         data=directory("../doc/fastqc1_results/multiqc_data")
-    conda: "fastqc"
+    conda: "env/fastqc.yaml"
     shell:
         """
         cd ../doc/fastqc1_results
