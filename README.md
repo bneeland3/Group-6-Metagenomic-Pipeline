@@ -1,6 +1,6 @@
 # Group-6-Metagenomic-Pipeline
 
-# Installaion:
+# Installation:
     1. Clone repository 
     2. Find the doc/data repository
     3. Please double check that the samples exist within your workspace:
