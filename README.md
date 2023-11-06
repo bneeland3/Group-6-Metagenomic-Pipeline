@@ -16,18 +16,25 @@
         1. Created/updated README.md
         2. Uploaded TSV files to doc for later download
         3. Created src and doc files
-        4. created environment.yml <-- is unfinished
-        5. created main.yml <-- is unfinished 
-        
+        4. created environment.yml 
+        5. created main.yml
+    10/27/23:
+        6. Rule all added to snakefile
+        7. Added fastqc 1 rule to snakefile
+    10/30/23:
+        8. Alteration to Snakefile and updates to repository organization
     11/1/23:
-        6. Multiqc/fastqc/trimmomatic environments added to repository
-        7. Creation of Snakefile and read samples function in quality_utils.py
-        
+        9. Multiqc/fastqc/trimmomatic environments added to repository
+        10. Creation of Snakefile and read samples function in quality_utils.py
+        11. Modification of read samples function within snakefile
+        12. Expand rule changed to use zip files to hopefully reduce size issue within github
+        13. Altered rules to further defining steps fastqc_1, mutliqc_1, trimmomatic, fastqc_2, multiqc_2, etc
     11/3/23:
-        8. Changes to Snakefile to see if gz files work better than large fastq using SeqTK
-        
+        14. Changes to Snakefile to see if gz files work better than large fastq files using SeqTK
+        15. Creation of indvidual download links for wgets in snakefile
     11/5/23:
-        9. Snakefile modified to use specific files for the time being to simplify the pipeline during testing
-        10. New fastq files added to github ../doc/data
-        11. Modified snakefile added by Emily!
+        12. Snakefile modified to use specific files for the time being to simplify the pipeline during testing
+        13. New fastq files added to github ../doc/data
+        14. Working snakefile added by Emily!
+        15. Pycodestyle updates and overall github cleanup
 

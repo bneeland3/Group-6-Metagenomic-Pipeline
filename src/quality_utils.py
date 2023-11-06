@@ -2,7 +2,7 @@
 
 def read_samples(file_name):
     sample = []
-    with open(file_name) as f:
-      for l in f:
-        countries.append(l.rstrip())
+    with open(file_name) as file:
+        for line in file:
+            countries.append(line.rstrip())
     return sample
