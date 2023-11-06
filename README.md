@@ -12,6 +12,8 @@ Metagenomic data processing and utilization requires complex bioinformatic tools
       --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
+    4. Please check if the most recent version of conda is installed using:
+        -- conda update conda
     
  
 
