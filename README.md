@@ -3,6 +3,15 @@
 Metagenomic sequencing is a method used in the field of genomics to study genetic material recovered directly from environmental or clinical samples. It involves the sequencing of nucleotide sequences isolated from all the organisms present in a given sample. Because of its ability to reveal the previously hidden diversity of microscopic life, metagenomics offers a powerful way of understanding the microbial world that might revolutionize understanding of biology... HOWEVER:
 
 Metagenomic data processing and utilization requires complex bioinformatic tools. This pipeline is aimed at simplifying the initial steps of metagenomic sequence quality screening, trimmiming and removal of host contamination. 
+
+Major Goals: 
+    -Quality check DNA data 
+    -Remove low quality reads 
+    -Redo quality check
+    -Remove host-contamination reads
+    -Redo quality check
+    -Run gene alignment tool
+    
 # Requirements:
     1. Please be sure that conda or mamba is already installed/updated to the latest version
 # Installation:
