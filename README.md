@@ -4,18 +4,26 @@ Metagenomic sequencing is a method used in the field of genomics to study geneti
 
 Metagenomic data processing and utilization requires complex bioinformatic tools. This pipeline is aimed at simplifying the initial steps of metagenomic sequence quality screening, trimmiming and removal of host contamination. 
 
-![3B58F472-9761-4392-9B1A-4D061B8B6761_4_5005_c](https://github.com/bneeland3/Group-6-Metagenomic-Pipeline/assets/104112036/1a018d87-2cd8-4c79-b235-273fadc6596c)
-
 # Installation:
     1. Clone repository 
     2. Find the doc/data repository
-    3. Please double check that the samples exist within your workspace:
+    3. Please double check that the test example samples exist within your workspace:
       --SRS014466.denovo_duplicates_marked.trimmed.1.fastq
       --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
-    4. From this point you can run the SnakeFile using:
-       snakemake -c1 --use-conda
+    
+ 
+
+# Usage:
+
+    1. Ensure you have conda installed on your computer
+    2. Setup metagenomic pipeline environment by running the following from your main directory:
+    `conda env create -f setup_env.yaml`
+    `conda activate metagenomics`
+    3. Next, run the snakefile from the src directory using:
+    `snakemake -c1 --use-conda`
+    4. Review the MultiQC report in the doc/fastqc1_output 
 
 # Updates:
     10/17/23: 
