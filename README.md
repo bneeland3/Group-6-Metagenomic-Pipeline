@@ -3,7 +3,9 @@
 Metagenomic sequencing is a method used in the field of genomics to study genetic material recovered directly from environmental or clinical samples. It involves the sequencing of nucleotide sequences isolated from all the organisms present in a given sample. Because of its ability to reveal the previously hidden diversity of microscopic life, metagenomics offers a powerful way of understanding the microbial world that might revolutionize understanding of biology... HOWEVER:
 
 Metagenomic data processing and utilization requires complex bioinformatic tools. This pipeline is aimed at simplifying the initial steps of metagenomic sequence quality screening, trimmiming and removal of host contamination. 
+
 ![3B58F472-9761-4392-9B1A-4D061B8B6761_4_5005_c](https://github.com/bneeland3/Group-6-Metagenomic-Pipeline/assets/104112036/1a018d87-2cd8-4c79-b235-273fadc6596c)
+
 # Installation:
     1. Clone repository 
     2. Find the doc/data repository
