@@ -1,0 +1,11 @@
+name: metagenomics
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - snakemake
+  - wget
+  - pip
+  - ipykernel
+  - pycodestyle

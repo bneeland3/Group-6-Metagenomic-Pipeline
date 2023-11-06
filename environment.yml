@@ -1,6 +1,0 @@
-name: 
-channels:
-  - conda-forge
-dependencies:
-  - pycodestyle
-  - numpy
