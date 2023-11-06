@@ -7,13 +7,16 @@ Metagenomic data processing and utilization requires complex bioinformatic tools
 # Installation:
     1. Clone repository 
     2. Find the doc/data repository
-    3. Please double check that the samples exist within your workspace:
+    3. Please double check that the test example samples exist within your workspace:
       --SRS014466.denovo_duplicates_marked.trimmed.1.fastq
       --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
     4. From this point you can run the SnakeFile using:
        snakemake -c1 --use-conda
+
+# Usage:
+
 
 # Updates:
     10/17/23: 

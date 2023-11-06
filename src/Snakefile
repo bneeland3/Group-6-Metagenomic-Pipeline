@@ -17,7 +17,6 @@ rule all:
 #    wget "https://drive.google.com/uc?id=1c8bXKesFJ7pDeM29-K2iUv3ZvUtqxlyU&export=download"
 #    """
 
-
 rule fastqc:
     input:
         F="../doc/data/{sample}.denovo_duplicates_marked.trimmed.1.fastq",
@@ -25,7 +24,7 @@ rule fastqc:
     output:
         html="../doc/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html",
         zip="../doc/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.zip"
-    conda: "fastqc"
+    conda: "/envs/fastqc.yaml"
     shell:
         """
         mkdir -p ../doc/fastqc1_results
@@ -38,7 +37,7 @@ rule multiqc:
     output:
         html="../doc/fastqc1_results/multiqc_report.html",
         data=directory("../doc/fastqc1_results/multiqc_data")
-    conda: "fastqc"
+    conda: "/envs/fastqc"
     shell:
         """
         cd ../doc/fastqc1_results
