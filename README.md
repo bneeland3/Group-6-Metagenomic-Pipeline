@@ -1,16 +1,15 @@
 # Group-6-Metagenomic-Pipeline
 
-Steps:
-# Installaion: 
-  1. Clone repository 
-  2. Find the doc/data repository
-  3. Please double check that the samples exist within your workspace:
+# Installaion:
+    1. Clone repository 
+    2. Find the doc/data repository
+    3. Please double check that the samples exist within your workspace:
       --SRS014466.denovo_duplicates_marked.trimmed.1.fastq
       --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
-  4. From this point you can run the SnakeFile using:
-      snakemake -c1
+    4. From this point you can run the SnakeFile using:
+       snakemake -c1
 
 # Updates:
     10/17/23: 
