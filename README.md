@@ -25,13 +25,16 @@ Major Goals:
     
 
 # Usage:
-
     1. Ensure you have conda installed on your computer
     2. Setup metagenomic pipeline environment by running the following from your main directory:
-    `conda env create -f setup_env.yaml`
-    `conda activate metagenomics`
+        `conda env create -f setup_env.yaml`
+        `conda activate metagenomics`
+        --For now you need to manually create and activate the fastqc.yaml within snakemake. We hope to fix this soon!
+        i. From the env directory run:
+            'conda env create -f fastqc.yaml'
+            'conda activate fastqc'
     3. Next, run the snakefile from the src directory using:
-    `snakemake -c1 --use-conda`
+        `snakemake -c1`
     4. Review the MultiQC report in the doc/fastqc1_output 
 
 
@@ -62,4 +65,6 @@ Major Goals:
         13. New fastq files added to github ../doc/data
         14. Working snakefile added by Emily!
         15. Pycodestyle updates and overall github cleanup
+    11/6/23:
+        16. Updated snakefile to run with fastqc environment as well as conda setups
 
