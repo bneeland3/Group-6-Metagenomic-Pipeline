@@ -3,7 +3,8 @@
 Metagenomic sequencing is a method used in the field of genomics to study genetic material recovered directly from environmental or clinical samples. It involves the sequencing of nucleotide sequences isolated from all the organisms present in a given sample. Because of its ability to reveal the previously hidden diversity of microscopic life, metagenomics offers a powerful way of understanding the microbial world that might revolutionize understanding of biology... HOWEVER:
 
 Metagenomic data processing and utilization requires complex bioinformatic tools. This pipeline is aimed at simplifying the initial steps of metagenomic sequence quality screening, trimmiming and removal of host contamination. 
-
+# Requirements:
+    1. Please be sure that conda or mamba is already installed/updated to the latest version
 # Installation:
     1. Clone repository 
     2. Find the doc/data repository
@@ -12,10 +13,7 @@ Metagenomic data processing and utilization requires complex bioinformatic tools
       --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
-    4. Please check if the most recent version of conda is installed using:
-        -- conda update conda
     
- 
 
 # Usage:
 
@@ -26,6 +24,8 @@ Metagenomic data processing and utilization requires complex bioinformatic tools
     3. Next, run the snakefile from the src directory using:
     `snakemake -c1 --use-conda`
     4. Review the MultiQC report in the doc/fastqc1_output 
+
+
 
 # Updates:
     10/17/23: 
