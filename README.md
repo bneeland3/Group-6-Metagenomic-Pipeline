@@ -13,7 +13,7 @@ Major Goals:
     -Run gene alignment tool
     
 # Requirements:
-    1. Please be sure that conda or mamba is already installed/updated to the latest version
+  Please be sure that conda or mamba is already installed/updated to the latest version
 # Installation:
     1. Clone repository 
     2. Find the doc/data repository
