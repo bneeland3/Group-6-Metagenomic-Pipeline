@@ -56,7 +56,7 @@ If you are planning on using your own data, please skip running the download_tes
 
         snakemake -c1
 
-5. Review the MultiQC report in the `doc/data/fastqc1_output`
+5. Review the quality of the sequencing data in the MultiQC report in the `doc/data/fastqc1_output`
 
 
 # Updates:
