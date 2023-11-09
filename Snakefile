@@ -1,55 +1,45 @@
+import os
+
+# extract only the part of the sample name before the first "." or "_".
+def read_sample_names(filename):
+    with open(filename, 'r') as file:
+        return [line.strip().split('.')[0].split('_')[0] for line in file]
+
+# Read sample names from "sample_names.txt"
+sample=read_sample_names("doc/data/sample_names.txt")
+
 rule all:
     input:
-        expand("doc/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=["SRS014466", "SRS023534"]),
-        "doc/fastqc1_results/multiqc_report.html"
-        
-
-#rule download_data:
-#    output:
-#        directory("doc/data")
-#    shell:
-#        """
-#        mkdir -p doc/data/
-#        cd doc/data/
-#        gdown "https://drive.google.com/uc?id=11oVlLFy2M4vZou6mlq02vcwaLknFexWd&export=download" -O SRS014466.1.fastq
-#        gdown "https://drive.google.com/uc?id=1c8bXKesFJ7pDeM29-K2iUv3ZvUtqxlyU&export=download" -O SRS014466.2.fastq
-#         """
-
-#rule generate_sample_list:
-#   output:
-#        "doc/data/sample_names.txt"
-#    shell:
-#        """
-#        cd doc/data/
-#        for file in *.fastq; do
-#            echo ${file%%.*} >> {output}
-#        done
-#        """
-
+        expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=sample),
+        "doc/data/fastqc1_results/multiqc_report.html"
 
 rule fastqc:
     input:
         F="doc/data/{sample}.denovo_duplicates_marked.trimmed.1.fastq",
         R="doc/data/{sample}.denovo_duplicates_marked.trimmed.2.fastq"
     output:
-        html="doc/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html",
-        zip="doc/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.zip"
-    conda: "env/fastqc.yaml"
+        html1="doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html",
+        zip1="doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.zip",
+        html2="doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.2_fastqc.html",
+        zip2="doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.2_fastqc.zip"
+    conda: "fastqc"
     shell:
         """
-        mkdir -p doc/fastqc1_results
-        fastqc {input.F} {input.R} --outdir doc/fastqc1_results/
+        mkdir -p doc/data/fastqc1_results
+        fastqc {input.F} --outdir doc/data/fastqc1_results/
+        fastqc {input.R} --outdir doc/data/fastqc1_results/
         """
 
 rule multiqc:
     input:
-        html=expand("doc/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=["SRS014466", "SRS023534"])
+        html1=expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=sample),
+        html2=expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.2_fastqc.html", sample=sample)
     output:
-        html="doc/fastqc1_results/multiqc_report.html",
-        data=directory("doc/fastqc1_results/multiqc_data")
-    conda: "env/fastqc.yaml"
+        html="doc/data/fastqc1_results/multiqc_report.html",
+        data=directory("doc/data/fastqc1_results/multiqc_data")
+    conda: "fastqc"
     shell:
         """
-        cd doc/fastqc1_results
+        cd doc/data/fastqc1_results
         multiqc .
         """
