@@ -47,7 +47,7 @@ When the download is complete, run the following to generate a txt file of your 
 
     python src/sample_names.py
 
-   **i. Option 12:** Using your own data:
+   **i. Option 2:** Using your own data:
 If you are planning on using your own data, please skip running the download_test_data.py script and run the following from the main repo, to generate a txt file of your sample names you will be using:
 
         python src/sample_names.py 
