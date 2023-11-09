@@ -23,7 +23,7 @@ Major Goals:
         git clone git@github.com:bneeland3/Group-6-Metagenomic-Pipeline.git
 
 # Usage:
-1. Ensure you have conda installed on your computer
+1. Ensure you have conda or mamba installed on your computer. If using mamba (faster), ensure all instances of "conda" below are replaced by "mamba" when utilizing. 
 
 2. Setup metagenomic pipeline environment by running the following from your main directory:
 
