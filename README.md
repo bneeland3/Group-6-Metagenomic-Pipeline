@@ -19,7 +19,8 @@ Major Goals:
 
 # Installation:
 1. Clone repository using
-> git clone git@github.com:bneeland3/Group-6-Metagenomic-Pipeline.git
+
+        git clone git@github.com:bneeland3/Group-6-Metagenomic-Pipeline.git
 
 # Usage:
 1. Ensure you have conda installed on your computer
