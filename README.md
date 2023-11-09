@@ -28,8 +28,6 @@ Major Goals:
 2. Setup metagenomic pipeline environment by running the following from your main directory:
 
         conda env create -f env/quality.yaml
-
-
         conda activate quality
 
 3. Data Download
