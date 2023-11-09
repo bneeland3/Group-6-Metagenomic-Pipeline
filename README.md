@@ -13,37 +13,37 @@ Major Goals:
     -Remove host-contamination reads
     -Redo quality check
     -Run gene alignment tool
-    
+
 # Requirements:
-  Please be sure that conda or mamba is already installed/updated to the latest version
+  Please be sure that conda or mamba (faster) is already installed/updated to the latest version
+
 # Installation:
     1. Clone repository 
-    2. Find the doc/data repository
-    3. Please double check that the test example samples exist within your workspace:
+
+# Usage:
+    1. Ensure you have conda installed on your computer
+
+    2. Setup metagenomic pipeline environment by running the following from your main directory:
+        `conda env create -f env/quality.yaml`
+        `conda activate quality`
+
+    3. Data Download
+        **i. Option 1:** Using provided data:
+        --If you are planning on using the provided data as a demo run, please either make sure the test example samples exist within your workspace in doc/data:
       --SRS014466.denovo_duplicates_marked.trimmed.1.fastq
       --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
     
+        If these did not download simply run `python src/download_test_data.py` from the main repo. Then run `python src/sample_names.py` from the main repo, to generate a txt file of your sample names you will be using.
 
-# Usage:
-    1. Ensure you have conda installed on your computer
-    2. Setup metagenomic pipeline environment by running the following from your main directory:
-        `conda env create -f setup_env.yaml`
-        `conda activate metagenomics`
-        --For now you need to manually create and activate the fastqc.yaml within snakemake. We hope to fix this soon!
-        i. From the env directory run:
-            'conda env create -f fastqc.yaml'
-            'conda activate fastqc'
-    3. Data Download
-        i. Option 1: Using provided data:
-        --If you are planning on using the provided data, please run download_test_data.py first and then sample_names.txt
-        ii: Option 2: Using your own data:
-        --If you are planning on using your own data, please skip running the download_test_data.py and run sample_names.txt
+        **ii: Option 2:** Using your own data:
+        --If you are planning on using your own data, please skip running the download_test_data.py script and run `python src/sample_names.py` from the main repo, to generate a txt file of your sample names you will be using. 
+
     4. Next, run the snakefile from the src directory using:
         `snakemake -c1`
-    5. Review the MultiQC report in the doc/fastqc1_output 
 
+    5. Review the MultiQC report in the doc/data/fastqc1_output 
 
 
 # Updates:

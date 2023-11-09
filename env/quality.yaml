@@ -1,4 +1,4 @@
-name: metagenomics
+name: quality
 channels:
   - bioconda
   - conda-forge
@@ -9,3 +9,5 @@ dependencies:
   - pip
   - ipykernel
   - pycodestyle
+  - fastqc
+  - multiqc

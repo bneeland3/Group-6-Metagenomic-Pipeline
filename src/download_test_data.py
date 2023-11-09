@@ -1,5 +1,8 @@
 import os
 import gdown
+import sys
+
+sys.path.insert(0, '../')  # noqa
 
 # Python Script to Download the Data and Make Sample Name File
 
