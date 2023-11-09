@@ -28,7 +28,7 @@ Major Goals:
         `conda activate quality`
 
     3. Data Download
-        **i. Option 1:** Using provided data:
+        i. Option 1: Using provided data:
         --If you are planning on using the provided data as a demo run, please either make sure the test example samples exist within your workspace in doc/data:
       --SRS014466.denovo_duplicates_marked.trimmed.1.fastq
       --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
@@ -37,7 +37,7 @@ Major Goals:
     
         If these did not download simply run `python src/download_test_data.py` from the main repo. Then run `python src/sample_names.py` from the main repo, to generate a txt file of your sample names you will be using.
 
-        **ii: Option 2:** Using your own data:
+        ii: Option 2: Using your own data:
         --If you are planning on using your own data, please skip running the download_test_data.py script and run `python src/sample_names.py` from the main repo, to generate a txt file of your sample names you will be using. 
 
     4. Next, run the snakefile from the src directory using:
