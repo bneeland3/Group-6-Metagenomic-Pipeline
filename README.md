@@ -4,6 +4,18 @@ Metagenomic sequencing is a method used in the field of genomics to study geneti
 
 Metagenomic data processing and utilization requires complex bioinformatic tools. This pipeline is aimed at simplifying the initial steps of metagenomic sequence quality screening, trimmiming and removal of host contamination. 
 
+![unnamed](https://github.com/bneeland3/Group-6-Metagenomic-Pipeline/assets/104112036/be4737fa-e19a-4a93-bad9-16e3ada7e0ae)
+
+Major Goals: 
+    -Quality check DNA data 
+    -Remove low quality reads 
+    -Redo quality check
+    -Remove host-contamination reads
+    -Redo quality check
+    -Run gene alignment tool
+    
+# Requirements:
+  Please be sure that conda or mamba is already installed/updated to the latest version
 # Installation:
     1. Clone repository 
     2. Find the doc/data repository
@@ -12,20 +24,22 @@ Metagenomic data processing and utilization requires complex bioinformatic tools
       --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
       --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
-    4. Please check if the most recent version of conda is installed using:
-        -- conda update conda
     
- 
 
 # Usage:
-
     1. Ensure you have conda installed on your computer
     2. Setup metagenomic pipeline environment by running the following from your main directory:
-    `conda env create -f setup_env.yaml`
-    `conda activate metagenomics`
+        `conda env create -f setup_env.yaml`
+        `conda activate metagenomics`
+        --For now you need to manually create and activate the fastqc.yaml within snakemake. We hope to fix this soon!
+        i. From the env directory run:
+            'conda env create -f fastqc.yaml'
+            'conda activate fastqc'
     3. Next, run the snakefile from the src directory using:
-    `snakemake -c1 --use-conda`
+        `snakemake -c1`
     4. Review the MultiQC report in the doc/fastqc1_output 
+
+
 
 # Updates:
     10/17/23: 
@@ -53,4 +67,6 @@ Metagenomic data processing and utilization requires complex bioinformatic tools
         13. New fastq files added to github ../doc/data
         14. Working snakefile added by Emily!
         15. Pycodestyle updates and overall github cleanup
+    11/6/23:
+        16. Updated snakefile to run with fastqc environment as well as conda setups
 

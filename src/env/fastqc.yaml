@@ -7,3 +7,4 @@ dependencies:
   - multiqc
   - fastqc
   - snakemake
+  - gdown

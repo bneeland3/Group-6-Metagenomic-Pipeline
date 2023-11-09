@@ -1,5 +1,4 @@
 import os
-import gdown
 
 # extract only the part of the sample name before the first "." or "_".
 def read_sample_names(filename):
@@ -11,8 +10,7 @@ sample=read_sample_names("doc/data/sample_names.txt")
 
 rule all:
     input:
-        expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", 
-sample=sample),
+        expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=sample),
         "doc/data/fastqc1_results/multiqc_report.html"
 
 rule fastqc:
@@ -34,12 +32,8 @@ rule fastqc:
 
 rule multiqc:
     input:
-        
-html1=expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", 
-sample=sample),
-        
-html2=expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.2_fastqc.html", 
-sample=sample)
+        html1=expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=sample),
+        html2=expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.2_fastqc.html", sample=sample)
     output:
         html="doc/data/fastqc1_results/multiqc_report.html",
         data=directory("doc/data/fastqc1_results/multiqc_data")

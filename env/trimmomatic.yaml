@@ -3,4 +3,3 @@ channels:
   - bioconda
   - conda-forge
   - defaults
-prefix: /Users/emily/anaconda3/envs/trimmomatic
