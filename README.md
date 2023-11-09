@@ -29,6 +29,7 @@ Major Goals:
 
         conda env create -f env/quality.yaml
 
+
         conda activate quality
 
 3. Data Download
