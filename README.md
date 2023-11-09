@@ -35,9 +35,14 @@ Major Goals:
         i. From the env directory run:
             'conda env create -f fastqc.yaml'
             'conda activate fastqc'
-    3. Next, run the snakefile from the src directory using:
+    3. Data Download
+        i. Option 1: Using provided data:
+        --If you are planning on using the provided data, please run download_test_data.py first and then sample_names.txt
+        ii: Option 2: Using your own data:
+        --If you are planning on using your own data, please skip running the download_test_data.py and run sample_names.txt
+    4. Next, run the snakefile from the src directory using:
         `snakemake -c1`
-    4. Review the MultiQC report in the doc/fastqc1_output 
+    5. Review the MultiQC report in the doc/fastqc1_output 
 
 
 
@@ -69,4 +74,7 @@ Major Goals:
         15. Pycodestyle updates and overall github cleanup
     11/6/23:
         16. Updated snakefile to run with fastqc environment as well as conda setups
+    11/8/23:
+        17. Emily upated snakefile, and created download_test_data.py and sample_names.txt
+        18. Usage/Instructions updated in readme
 
