@@ -90,4 +90,13 @@ If you are planning on using your own data, please skip running the download_tes
     11/8/23:
         17. Emily upated snakefile, and created download_test_data.py and sample_names.txt
         18. Usage/Instructions updated in readme
+    11/10/23:
+        19. Initialized accounts for Fiji cluster to run larger datasets
+    11/15/23:
+        20. Worked on activating conda environments for set up 
+        21. Created index.sh and config.yml
+    11/16/23:
+        22. Tested environment setup on another computer to ensure all files could be cloned and accessed properly.
+        23. Run.sh created and modified.
+    
 
