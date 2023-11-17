@@ -36,22 +36,22 @@ Major Goals:
 4. Data Download
 
    **i. Option 1:** Using provided data:
-If you are planning on using the provided data as a demo run, please either make sure the test example samples exist within your workspace in doc/data:
+    If you are planning on using the provided data as a demo run, please either make sure the test example samples exist within your workspace in doc/data:
 
         --SRS014466.denovo_duplicates_marked.trimmed.1.fastq
         --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
         --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
         --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
     
-If these did not download simply run the following from the main repo to download demo data. 
+    If these did not download simply run the following from the main repo to download demo data. 
 
         python src/download_test_data.py
-When the download is complete, run the following to generate a txt file of your sample names you will be using:
+    When the download is complete, run the following to generate a txt file of your sample names you will be using:
 
-    python src/sample_names.py
+        python src/sample_names.py
 
    **i. Option 2:** Using your own data:
-If you are planning on using your own data, please skip running the download_test_data.py script and run the following from the main repo, to generate a txt file of your sample names you will be using:
+    If you are planning on using your own data, please skip running the download_test_data.py script and run the following from the main repo, to generate a txt file of your sample names you will be using:
 
         python src/sample_names.py 
 
