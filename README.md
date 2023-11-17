@@ -29,8 +29,14 @@ Major Goals:
 
         conda env create -f env/quality.yaml
         conda activate quality
+    2.i. If you are using mamba, there is a possibility you may run into an error with the initialization after running the first line from step 2. Please run the following:
 
-3. Data Download
+         mamba init
+   2.ii. After running this line, please close out of the current terminal and open a new instance. Then you can run:
+
+         mamba activate quality
+   
+4. Data Download
 
    **i. Option 1:** Using provided data:
 If you are planning on using the provided data as a demo run, please either make sure the test example samples exist within your workspace in doc/data:
