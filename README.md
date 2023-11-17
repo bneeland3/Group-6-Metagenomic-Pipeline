@@ -25,20 +25,15 @@ Major Goals:
 # Usage:
 1. Ensure you have conda or mamba installed on your computer. If using mamba (faster), ensure all instances of "conda" below are replaced by "mamba" when utilizing. If you are unsure if either is initialized please run: 
 
-        conda init (or)
+        conda init
+        (or)
         mamba init
-2. Setup metagenomic pipeline environment by running the following from your main directory:
+3. Setup metagenomic pipeline environment by running the following from your main directory:
 
         conda env create -f env/quality.yaml
         conda activate quality
-    2.i. If you are using mamba, there is a possibility you may run into an error with the initialization after running the first line from step 2. Please run the following if that occurs:
-
-         mamba init
-   2.ii. After running this line, please close out of the current terminal and open a new instance. Then you can run:
-
-         mamba activate quality
    
-3. Data Download
+4. Data Download
 
    **i. Option 1:** Using provided data:
 If you are planning on using the provided data as a demo run, please either make sure the test example samples exist within your workspace in doc/data:
