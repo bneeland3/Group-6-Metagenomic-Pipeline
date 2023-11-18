@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pmed_dir=$1
+pmed_dir=$1 # THIS IS OUR MAIN
 out_dir=$2
 config=$3 
 
@@ -13,8 +13,9 @@ echo $config
 smk_dir=$pmed_dir"workflow/"
 log='log/ind_log.txt'
 ##
-##
 
+
+# ADD TO THE README FOR INITIAL SETUP 
 # for singularity container 
 #. /opt/conda/etc/profile.d/conda.sh
 # load conda and activate snakemake env for run
@@ -25,7 +26,7 @@ log='log/ind_log.txt'
 #export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:~/miniconda3/condabin/conda
 #conda activate snakemake
 
-# activate conda / mamba
+# activate conda / mamba (PUT AN EG OF OUR BASHRC ON REPO)
 source  ~/.bashrc
 # go to project directory
 echo 'Going to project directory...'

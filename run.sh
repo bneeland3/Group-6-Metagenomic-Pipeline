@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-### TODO:
-### modify these options for your system
+### TODO: modify these options for your system !
 
 #SBATCH -p short
 #SBATCH --job-name=example
@@ -16,32 +15,25 @@
 
 set -e pipefail
 
-### TODO: 
-### modify these paths
+### TODO: modify these paths for each setup! 
+
 # scripts
-index_script=~/index.sh
-search_script=~/search.sh
-evaluate_script=~/evaluate.sh
+# index_script=~/index.sh # WE STILL NEED TO EDIT THIS INDEX SCRIPT
+
 # directories
-pmed_dir=""
-out_dir=~/example/
+main_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/"
+out_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/"
+config_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/src/"
+
 # config file
-config_file=$out_dir'config.yml'
-###
-###
+config_file=$out_dir'config.yml' # MAKE SURE THIS FILE GETS PUT IN THE RIGHT PLACE
 
 # make log directory
-test ! -d $out_dir"log/" && mkdir $out_dir"log/"
+test ! -d $out_dir"log/" && mkdir $out_dir"log/" # HUH - CHECK UP ON THIS 
 
 # move to project dir
-cd $pmed_dir
+cd $main_dir
 
 # run indexing step
 echo "Running indexing step."
 bash $index_script $pmed_dir $out_dir $config_file
-# run searching step
-echo "Running searching step."
-bash $search_script $pmed_dir $out_dir $config_file
-## run evaluation step
-#echo "Running evaluation step."
-#bash $evaluate_script $pmed_dir $out_dir $config_file
