@@ -11,7 +11,7 @@
 #SBATCH --mail-type=NONE
 #SBATCH --mail-user=emye7956@email.com
 #SBATCH --output=err/
-#SBATCH --error=err/
+#SBATCH --error=err/ # these may alos need to change
 
 set -e pipefail
 

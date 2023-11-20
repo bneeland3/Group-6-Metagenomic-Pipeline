@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# these pusitional arguments get called in in run.sh 
+# these positional arguments get called in in run.sh 
 main_dir=$1 # THIS IS MAIN (Grp6 etc)
 out_dir=$2
 config=$3 
