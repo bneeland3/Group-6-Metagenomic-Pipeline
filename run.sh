@@ -9,16 +9,16 @@
 #SBATCH --mem=32gb
 #SBATCH --time=23:00:00
 #SBATCH --mail-type=NONE
-#SBATCH --mail-user=name@email.com
-#SBATCH --output=./example/out/example.out
-#SBATCH --error=./example/err/example.err
+#SBATCH --mail-user=emye7956@email.com
+#SBATCH --output=err/
+#SBATCH --error=err/
 
 set -e pipefail
 
 ### TODO: modify these paths for each setup! 
 
 # scripts
-# index_script=~/index.sh # WE STILL NEED TO EDIT THIS INDEX SCRIPT
+# index_script=src/index.sh # WE STILL NEED TO EDIT THIS INDEX SCRIPT
 
 # directories
 main_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/"
@@ -26,7 +26,7 @@ out_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data
 config_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/src/"
 
 # config file
-config_file=$out_dir'config.yml' # MAKE SURE THIS FILE GETS PUT IN THE RIGHT PLACE
+config_file=$config_dir'config.yml' # MAKE SURE THIS FILE GETS PUT IN THE RIGHT PLACE
 
 # make log directory
 test ! -d $out_dir"log/" && mkdir $out_dir"log/" # HUH - CHECK UP ON THIS 
@@ -35,5 +35,5 @@ test ! -d $out_dir"log/" && mkdir $out_dir"log/" # HUH - CHECK UP ON THIS
 cd $main_dir
 
 # run indexing step
-echo "Running indexing step."
-bash $index_script $pmed_dir $out_dir $config_file
+echo "Running QC step."
+bash $index_script $main_dir $out_dir $config_file

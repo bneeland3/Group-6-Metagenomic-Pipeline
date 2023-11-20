@@ -6,8 +6,8 @@ __default__:
   nodes: 1
   ntasks-per-node: 16
   mem: 32gb
-  output: '~/CSCI_4118/Group-6-Metagenomic-Pipeline/err/{rule}.out' 
-  error: '/Users/brne3762/CSCI_4118/Group-6-Metagenomic-Pipeline/err/{rule}.err'
+  output: '"$MAIN}"/err/{rule}.out' 
+  error: '"{$MAIN}"/err/{rule}.err'
 
 model:
   partition: nvidia-a100
