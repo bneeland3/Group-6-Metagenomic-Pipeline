@@ -18,7 +18,7 @@ set -e pipefail
 ### TODO: modify these paths for each setup! 
 
 # scripts
-# index_script=src/index.sh # WE STILL NEED TO EDIT THE INDEX SCRIPT
+index_script=src/index.sh # This has the snakefile instructions
 
 # directories
 main_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/"

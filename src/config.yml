@@ -7,7 +7,7 @@ __default__:
   ntasks-per-node: 16
   mem: 32gb
   output: '"$MAIN}"/err/{rule}.out' 
-  error: '"{$MAIN}"/err/{rule}.err' # not sure whether this main will work.
+  error: '"{$MAIN}"/err/{rule}.err' # not sure whether this main will work. Might need fulllPth
 
 model:
   partition: nvidia-a100
