@@ -11,10 +11,8 @@ echo $config
 
 ## These directories should be correct.
 ## If you have changed where scripts exist, change these paths
-smk_dir=$pmed_dir"workflow/"
-log='log/ind_log.txt'
-##
-
+smk_dir=$main_dir
+log=$out_dir'log/ind_log.txt'
 
 # ADD TO THE README FOR INITIAL SETUP 
 # for singularity container 
@@ -31,7 +29,7 @@ log='log/ind_log.txt'
 source  ~/.bashrc
 # go to project directory
 echo 'Going to project directory...'
-cd ~/Group-6-Metagenomic-Pipeline
+cd $main_dir
 
 # runnning QC pipeline
 echo 'running QC pipeline' > $log

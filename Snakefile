@@ -22,7 +22,7 @@ rule fastqc:
         zip1="doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.zip",
         html2="doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.2_fastqc.html",
         zip2="doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.2_fastqc.zip"
-    conda: "fastqc"
+    conda: "quality"
     shell:
         """
         mkdir -p doc/data/fastqc1_results
@@ -37,7 +37,7 @@ rule multiqc:
     output:
         html="doc/data/fastqc1_results/multiqc_report.html",
         data=directory("doc/data/fastqc1_results/multiqc_data")
-    conda: "fastqc"
+    conda: "quality"
     shell:
         """
         cd doc/data/fastqc1_results
