@@ -1,0 +1,66 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job        count
+-------  -------
+all            1
+fastqc         2
+multiqc        1
+total          4
+
+Select jobs to execute...
+
+[Tue Nov 28 12:17:00 2023]
+rule fastqc:
+    input: doc/data/SRS014466.denovo_duplicates_marked.trimmed.1.fastq, doc/data/SRS014466.denovo_duplicates_marked.trimmed.2.fastq
+    output: doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.zip, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.2_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.2_fastqc.zip
+    jobid: 1
+    reason: Missing output files: doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.2_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.html
+    wildcards: sample=SRS014466
+    resources: tmpdir=/tmp
+
+
+[Tue Nov 28 12:17:00 2023]
+rule fastqc:
+    input: doc/data/SRS023534.denovo_duplicates_marked.trimmed.1.fastq, doc/data/SRS023534.denovo_duplicates_marked.trimmed.2.fastq
+    output: doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.zip, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.2_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.2_fastqc.zip
+    jobid: 2
+    reason: Missing output files: doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.2_fastqc.html
+    wildcards: sample=SRS023534
+    resources: tmpdir=/tmp
+
+[Tue Nov 28 12:17:25 2023]
+Finished job 1.
+1 of 4 steps (25%) done
+[Tue Nov 28 12:17:26 2023]
+Finished job 2.
+2 of 4 steps (50%) done
+Select jobs to execute...
+
+[Tue Nov 28 12:17:26 2023]
+rule multiqc:
+    input: doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.2_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.2_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.2_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.2_fastqc.html
+    output: doc/data/fastqc1_results/multiqc_report.html, doc/data/fastqc1_results/multiqc_data
+    jobid: 3
+    reason: Missing output files: doc/data/fastqc1_results/multiqc_report.html; Input files updated by another job: doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.2_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.2_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.html
+    resources: tmpdir=/tmp
+
+[Tue Nov 28 12:17:44 2023]
+Finished job 3.
+3 of 4 steps (75%) done
+Select jobs to execute...
+
+[Tue Nov 28 12:17:44 2023]
+localrule all:
+    input: doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/multiqc_report.html
+    jobid: 0
+    reason: Input files updated by another job: doc/data/fastqc1_results/SRS023534.denovo_duplicates_marked.trimmed.1_fastqc.html, doc/data/fastqc1_results/multiqc_report.html, doc/data/fastqc1_results/SRS014466.denovo_duplicates_marked.trimmed.1_fastqc.html
+    resources: tmpdir=/tmp
+
+[Tue Nov 28 12:17:44 2023]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: .snakemake/log/2023-11-28T121658.508112.snakemake.log

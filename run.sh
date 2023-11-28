@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-### TODO: modify these options for your system !
-
 #SBATCH -p short
 #SBATCH --job-name=example
 #SBATCH --nodes=1
@@ -10,8 +8,6 @@
 #SBATCH --time=23:00:00
 #SBATCH --mail-type=NONE
 #SBATCH --mail-user=emye7956@email.com
-#SBATCH --output=err/
-#SBATCH --error=err/ # these may alos need to change
 
 set -e pipefail
 
@@ -26,10 +22,10 @@ out_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data
 config_dir="/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/src/"
 
 # config file
-config_file=$config_dir'config.yml' # MAKE SURE THIS FILE GETS PUT IN THE RIGHT PLACE
+config_file=$config_dir'config.yml' # This file also needs unique path changes prior
 
 # make log directory
-test ! -d $out_dir"log/" && mkdir $out_dir"log/" # HUH - CHECK UP ON THIS 
+test ! -d $out_dir"log/" && mkdir $out_dir"log/"
 
 # move to project dir
 cd $main_dir

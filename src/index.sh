@@ -5,7 +5,7 @@ main_dir=$1 # THIS IS MAIN (Grp6 etc)
 out_dir=$2
 config=$3 
 
-echo $pmed_dir
+echo $main_dir
 echo $out_dir
 echo $config
 
@@ -18,15 +18,17 @@ log=$out_dir'log/ind_log.txt'
 # for singularity container 
 #. /opt/conda/etc/profile.d/conda.sh
 # load conda and activate snakemake env for run
-#module load anaconda
+# module load anaconda
 #.~/miniconda3/bin/conda
 #conda_dir="/home/sdp/miniconda3/envs/"
 #source ~/miniconda3/etc/profile.d/mamba.sh 
 #export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:~/miniconda3/condabin/conda
-#conda activate snakemake
+#conda activate quality
 
 # activate conda / mamba (PUT AN EG OF OUR BASHRC ON REPO)
-source  ~/.bashrc
+# source  ~/.bashrc
+# source ~/miniconda3/bin/activate
+# conda activate quality
 # go to project directory
 echo 'Going to project directory...'
 cd $main_dir
@@ -35,7 +37,7 @@ cd $main_dir
 echo 'running QC pipeline' > $log
 start_slice=$(date +%s.%3N)
 snakemake \
-    -s snakeFile \
+    -s Snakefile \
     -c 16 \
     -j 5 \
     --configfile=$config
