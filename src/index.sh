@@ -29,7 +29,6 @@ log=$out_dir'log/ind_log.txt'
 # source  ~/.bashrc
 # source ~/miniconda3/bin/activate
 # conda activate quality
-# go to project directory
 echo 'Going to project directory...'
 cd $main_dir
 
