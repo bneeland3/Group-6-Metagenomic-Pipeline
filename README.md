@@ -23,7 +23,7 @@ Major Goals:
         git clone git@github.com:bneeland3/Group-6-Metagenomic-Pipeline.git
 
 # Usage:
-1. Ensure you have conda or mamba installed on your computer. If using mamba (faster), ensure all instances of "conda" below are replaced by "mamba" when utilizing. If you are unsure if either is initialized please run: 
+2. Ensure you have conda or mamba installed on your computer or cluster. If using mamba (faster), ensure all instances of "conda" below are replaced by "mamba" when utilizing. If you are unsure if either is initialized please run: 
 
         conda init
         (or)
@@ -32,6 +32,7 @@ Major Goals:
 
         conda env create -f env/quality.yaml
         conda activate quality
+    * note: depending on the cluster used and the conda/miniconda installation, sometimes the command `source ~/miniconda3/bin/activate` is necessary prior to running steps 1 and 2. 
    
 4. Data Download
 
@@ -55,11 +56,24 @@ Major Goals:
 
         python src/sample_names.py 
 
-4. Next, run the snakefile from the src directory using:
+4. Before you run snakemake, some file paths need to be changed for your unique directory setup. The changes needed will be in files:
 
-        snakemake -c1
+    **1.run.sh:**
+    This file is used to submit a job to your cluster. You will need to change the main_dir, output_dir and config_dir paths in lines 20-22. It calls the file `src/index.sh` that will call the snakefile with appropriate parameters. 
+    **2.src/config.yml**
+    This file contains paths to files and directories used by snakemake. Additional snakefile parameters can also be included here to avoid needing to edit the raw snakefile.
 
-5. Review the quality of the sequencing data in the MultiQC report in the `doc/data/fastqc1_output`
+5. Next, run the quality control pipeline from the src directory. To do this, you need to ensure that you are in the "quality" environment created in step 2 and 3. Then, if you are using a cluster system that utilizes slurm and batch jobs submissions, run:
+
+        sbatch run.sh
+
+6. Information about the progress of the job submitted will be found in a file that starts with "slurm", end with "out", and has the job ID in the middle. For example, if you type `ls` from the directory you submited step 5, you might see the file `slurm-9261423.out`. To see how it went, type:
+
+        less slurm-9261423.out
+
+7. Review the quality of the sequencing data in the MultiQC report in the `doc/fastqc1_output`. The multiqc script looks something like this: 
+
+ INSERT MULTIQC HTML LINK OR SCREEN SHOT
 
 
 # Updates:
