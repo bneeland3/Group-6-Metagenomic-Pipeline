@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # these positional arguments get called in in run.sh 
-main_dir=$1 # THIS IS MAIN (Grp6 etc)
+main_dir=$1 # This is where the snakefile and runsh file is
 out_dir=$2
 config=$3 
 
@@ -14,7 +14,7 @@ echo $config
 smk_dir=$main_dir
 log=$out_dir'log/ind_log.txt'
 
-# ADD TO THE README FOR INITIAL SETUP 
+# ADD TO THE README FOR INITIAL SETUP - this needs to be editted/removed
 # for singularity container 
 #. /opt/conda/etc/profile.d/conda.sh
 # load conda and activate snakemake env for run
@@ -29,7 +29,6 @@ log=$out_dir'log/ind_log.txt'
 # source  ~/.bashrc
 # source ~/miniconda3/bin/activate
 # conda activate quality
-# go to project directory
 echo 'Going to project directory...'
 cd $main_dir
 

@@ -1,13 +1,12 @@
 ### TODO: 
-### modify these paths for each computer setup
+### modify these paths for each computer setup each time
 
 main_dir:
   /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/
 data_dir:
   /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/
 out_dir:
-  //Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/
+  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/
 sample_IDs:
   /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/sample_names.txt
-k:
-  5
+

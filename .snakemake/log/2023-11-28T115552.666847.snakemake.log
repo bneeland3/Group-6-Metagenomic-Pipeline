@@ -1,4 +1,0 @@
-FileNotFoundError in file /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/Snakefile, line 5:
-[Errno 2] No such file or directory: '/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/sample_names.txt'
-  File "/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/Snakefile", line 9, in <module>
-  File "/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/Snakefile", line 5, in read_sample_names
