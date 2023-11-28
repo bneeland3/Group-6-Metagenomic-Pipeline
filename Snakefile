@@ -1,17 +1,19 @@
 import os
+from types import SimpleNamespace
+config = SimpleNamespace(**config)
 
 # extract only the part of the sample name before the first "." or "_".
 def read_sample_names(filename):
     with open(filename, 'r') as file:
         return [line.strip().split('.')[0].split('_')[0] for line in file]
 
-# Read sample names from "sample_names.txt"
-sample=read_sample_names("doc/data/sample_names.txt")
+# Read sample names from "sample_names.txt" made using sample_names.py prior to snakemake
+sample=read_sample_names("{config.sample_IDs}")
 
 rule all:
     input:
-        expand("doc/data/fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=sample),
-        "doc/data/fastqc1_results/multiqc_report.html"
+        expand(f"{config.out_dir}fastqc1_results/{sample}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=sample),
+        "doc/fastqc1_results/multiqc_report.html"
 
 rule fastqc:
     input:

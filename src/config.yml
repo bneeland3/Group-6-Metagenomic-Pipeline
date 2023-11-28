@@ -1,16 +1,13 @@
-__default__:
-  job-name: "{rule}"
-  partition: short
-  time: 1440
-  gpu: gpu:0
-  nodes: 1
-  ntasks-per-node: 16
-  mem: 32gb
-  output: '"$MAIN}"/err/{rule}.out' 
-  error: '"{$MAIN}"/err/{rule}.err' # not sure whether this main will work. Might need fulllPth
+### TODO: 
+### modify these paths for each computer setup
 
-model:
-  partition: nvidia-a100
-  nodelist: fijigpu-06
-  gpu: gpu:1
-  time: 1440
+main_dir:
+  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/
+data_dir:
+  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/
+out_dir:
+  //Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/
+sample_IDs:
+  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/sample_names.txt
+k:
+  5
