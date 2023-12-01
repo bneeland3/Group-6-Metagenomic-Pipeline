@@ -1,6 +1,17 @@
 import os
 import sys
 
+'''
+Script for sample names in the data directory
+---------------------------------------------
+    Lists all files in the data directory.
+    Then extracts sample names from files ending in fastq (fq.gz)
+
+Returns
+-------
+    Creates a sample_names.txt file containing sample names
+'''
+
 sys.path.insert(0, '../')  # noqa
 
 data_dir = 'doc/data'
@@ -9,14 +20,12 @@ data_dir = 'doc/data'
 files = os.listdir(data_dir)
 
 # Extract sample names from the file names if they end in fastq or fq.gz
-sample_names = [os.path.splitext(file)[0].split('.')[0].split('_')[0] for file in files if 
-file.endswith('.fastq') or file.endswith('.fq.gz')]
+sample_names = [os.path.splitext(file)[0].split('.')[0].split('_')[0]
+                for file in files
+                if file.endswith('.fastq') or file.endswith('.fq.gz')]
 
 # Create a sample_names.txt file
 sample_names_file_path = os.path.join(data_dir, 'sample_names.txt')
 with open(sample_names_file_path, 'w') as sample_file:
     for sample_name in sample_names:
         sample_file.write(sample_name + '\n')
-
-
-

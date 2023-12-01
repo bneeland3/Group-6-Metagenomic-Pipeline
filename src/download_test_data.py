@@ -2,9 +2,14 @@ import os
 import gdown
 import sys
 
-sys.path.insert(0, '../')  # noqa
+'''
+Script to download test data from repository
+--------------------------------------------
+    Creates directory to store data.
+    Defines file URLs and downlaods files.
+'''
 
-# Python Script to Download the Data and Make Sample Name File
+sys.path.insert(0, '../')  # noqa
 
 # Create a directory to store the data
 data_dir = 'doc/data'
@@ -12,10 +17,10 @@ os.makedirs(data_dir, exist_ok=True)
 
 # Define the file URLs
 file_urls = {
-    'SRS014466.1.fastq.gz': 
-'https://drive.google.com/uc?id=11oVlLFy2M4vZou6mlq02vcwaLknFexWd&export=download',
-    'SRS014466.2.fastq.gz': 
-'https://drive.google.com/uc?id=1c8bXKesFJ7pDeM29-K2iUv3ZvUtqxlyU&export=download'
+    'SRS014466.1.fastq.gz':
+    'https://drive.google.com/uc?id=11oVlLFy2M4vZou6mlq02vcwaLknFexWd&export=download',
+    'SRS014466.2.fastq.gz':
+    'https://drive.google.com/uc?id=1c8bXKesFJ7pDeM29-K2iUv3ZvUtqxlyU&export=download'
 }
 
 # Download the files
