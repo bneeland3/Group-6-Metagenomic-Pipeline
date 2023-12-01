@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # these positional arguments get called in in run.sh 
-main_dir=$1 # This is where the snakefile and runsh file is
+main_dir=$1 # Location of snakefile and runsh file.
 out_dir=$2
 config=$3 
 
