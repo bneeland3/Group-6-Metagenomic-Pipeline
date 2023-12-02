@@ -18,6 +18,7 @@ jobs:
         with:
            environment-name: quality
            environment-file: env/quality.yml
-      - run: cd ../src
+      - run: |
+             cd ../src
              pycodestyle $(git ls-files "*.py")
   
