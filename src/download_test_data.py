@@ -18,9 +18,11 @@ os.makedirs(data_dir, exist_ok=True)
 # Define the file URLs
 file_urls = {
     'SRS014466.1.fastq.gz':
-    'https://drive.google.com/uc?id=11oVlLFy2M4vZou6mlq02vcwaLknFexWd&export=download',
+    '''https://drive.google.com/
+     uc?id=11oVlLFy2M4vZou6mlq02vcwaLknFexWd&export=download''',
     'SRS014466.2.fastq.gz':
-    'https://drive.google.com/uc?id=1c8bXKesFJ7pDeM29-K2iUv3ZvUtqxlyU&export=download'
+    '''https://drive.google.com/
+    uc?id=1c8bXKesFJ7pDeM29-K2iUv3ZvUtqxlyU&export=download'''
 }
 
 # Download the files
