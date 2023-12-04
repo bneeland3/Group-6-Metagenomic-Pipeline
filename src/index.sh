@@ -36,10 +36,12 @@ cd $main_dir
 echo 'running QC pipeline' > $log
 start_slice=$(date +%s.%3N)
 snakemake \
-    -s Snakefile \
-    -c 16 \
-    -j 5 \
+    --snakefile ${main_dir}Snakefile \
+    --use-conda \
+    --cores 6 \
+    --jobs 5 \
     --configfile=$config
+    #--dag --dry-run | dot -Tpng > ${out_dir}dag.png \
 end_slice=$(date +%s.%3N)
 slice_time=$(echo "scale=3; $end_slice - $start_slice" | bc)
 echo "QC: $slice_time seconds" >> $log

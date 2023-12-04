@@ -31,7 +31,10 @@ Major Goals:
 3. Setup metagenomic pipeline environment by running the following from your main directory:
 
         conda env create -f env/quality.yaml
+        conda env create -f env/trimmomatic.yaml
+
         conda activate quality
+
     * note: depending on the cluster used and the conda/miniconda installation, sometimes the command `source ~/miniconda3/bin/activate` is necessary prior to running steps 1 and 2. 
    
 4. Data Download
@@ -59,17 +62,23 @@ Major Goals:
 4. Before you run snakemake, some file paths need to be changed for your unique directory setup. The changes needed will be in files:
 
     **1.run.sh:**
-    This file is used to submit a job to your cluster. You will need to change the main_dir, output_dir and config_dir paths in lines 20-22. It calls the file `src/index.sh` that will call the snakefile with appropriate parameters. 
-    **2.src/config.yml**
-    This file contains paths to files and directories used by snakemake. Additional snakefile parameters can also be included here to avoid needing to edit the raw snakefile.
+    This file is used to submit a job to your cluster (here holding sbatch command parameters). You will need to change the main_dir, output_dir and config_dir paths in lines 20-22. It calls the file `src/index.sh` that will call the snakefile with appropriate parameters. You can also change the sbatch email and partition depending on the cluster system being utilized.  
+    **2.index.sh:**
+    This file holds the snakemake execution command parameters. You can see more options that could be included here by running `snakemake --help` if in the activated "quality" conda environment that has snakemake installed.
+    **3.src/config.yml**
+    This file contains paths to files and directories used by snakemake. Additional snakefile parameters (such as for the trimmomatic rule) are also included here to avoid needing to edit the raw snakefile.
 
 5. Next, run the quality control pipeline from the src directory. To do this, you need to ensure that you are in the "quality" environment created in step 2 and 3. Then, if you are using a cluster system that utilizes slurm and batch jobs submissions, run:
 
         sbatch run.sh
 
+    * note: If you would like to test the snakemake workflow without actually running anything, or if you would like to see the directed acyclic graph (DAG) of jobs submitted, you can do so by editting the `src/index.sh file to include` `--dag --dry-run | dot -Tpng > dag.png` in the snakemake command (hashed out in the index.sh file on line 43)
+
 6. Information about the progress of the job submitted will be found in a file that starts with "slurm", end with "out", and has the job ID in the middle. For example, if you type `ls` from the directory you submited step 5, you might see the file `slurm-9261423.out`. To see how it went, type:
 
         less slurm-9261423.out
+
+    You can learn more about slurm settings [here](https://slurm.schedmd.com/sbatch.html).
 
 7. Review the quality of the sequencing data in the MultiQC report in the `doc/fastqc1_output`. The multiqc script looks something like this: 
 

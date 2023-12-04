@@ -3,3 +3,5 @@ channels:
   - bioconda
   - conda-forge
   - defaults
+dependencies:
+  - trimmomatic

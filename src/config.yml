@@ -10,3 +10,19 @@ out_dir:
 sample_IDs:
   /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/sample_names.txt
 
+### Edit for your specific trimming settings:
+
+adapters: # will differ depending on the sequencing kit used for data 
+  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/adapters.fasta
+adapter_settings:
+  :2:30:10
+sliding_window:
+  4:20
+leading:
+  10
+trailing:
+  10
+min_length:
+  50
+trim_threads:
+  8
