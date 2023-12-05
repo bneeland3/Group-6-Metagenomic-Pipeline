@@ -14,17 +14,6 @@ echo $config
 smk_dir=$main_dir
 log=$out_dir'log/ind_log.txt'
 
-# ADD TO THE README FOR INITIAL SETUP - this needs to be editted/removed
-# for singularity container 
-#. /opt/conda/etc/profile.d/conda.sh
-# load conda and activate snakemake env for run
-# module load anaconda
-#.~/miniconda3/bin/conda
-#conda_dir="/home/sdp/miniconda3/envs/"
-#source ~/miniconda3/etc/profile.d/mamba.sh 
-#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:~/miniconda3/condabin/conda
-#conda activate quality
-
 # activate conda / mamba (PUT AN EG OF OUR BASHRC ON REPO)
 # source  ~/.bashrc
 # source ~/miniconda3/bin/activate
