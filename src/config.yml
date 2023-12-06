@@ -12,17 +12,15 @@ sample_IDs:
 
 ### Edit for your specific trimming settings:
 
-adapters: # will differ depending on the sequencing kit used for data 
-  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/adapters.fasta
-adapter_settings:
-  :2:30:10
-sliding_window:
-  4:20
-leading:
-  10
-trailing:
-  10
-min_length:
-  50
-trim_threads:
-  8
+# use this parameter if you have adapters and would like to remove them. 
+# provide the path to the adapter sequence file and settings. 
+#adapters:
+#  ILLUMINACLIP:/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/adapters.fasta:2:30:10 SLIDINGWINDOW
+
+# use this parameter if your adapters have already been removed
+adapters: SLIDINGWINDOW
+sliding_window: 4:20
+leading: 10
+trailing: 10
+min_length: 50
+trim_threads: 1

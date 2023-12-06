@@ -64,7 +64,6 @@ rule trimmomatic:
     conda:"trimmomatic"
     params:
         adapters=config.adapters,
-        a_settings=config.adapter_settings,
         swindow=config.sliding_window,
         leading=config.leading,
         trailing=config.trailing,
@@ -74,11 +73,11 @@ rule trimmomatic:
         """
         mkdir -p {config.out_dir}trimmed_output/{wildcards.sample}
         touch {config.out_dir}trimmed_output/failures.txt
-        trimmomatic PE -threads {params.threads} \
+        trimmomatic PE -threads 1 \
             -trimlog {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trimlog \
             -summary {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trim.log \
             -validatePairs {config.data_dir}{wildcards.sample}.denovo_duplicates_marked.trimmed.1.fastq {config.data_dir}{wildcards.sample}.denovo_duplicates_marked.trimmed.2.fastq \
             -baseout {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trimmed \
-            ILLUMINACLIP:{params.adapters}{params.a_settings} SLIDINGWINDOW:{params.swindow} LEADING:{params.leading} TRAILING:{params.trailing} MINLEN:{params.minlen} \
+            {params.adapters}:{params.swindow} LEADING:{params.leading} TRAILING:{params.trailing} MINLEN:{params.minlen} \
             || echo {wildcards.sample} >> {config.out_dir}trimmed_output/failures.txt
         """
