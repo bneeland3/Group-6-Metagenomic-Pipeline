@@ -80,9 +80,10 @@ Major Goals:
 
     You can learn more about slurm settings [here](https://slurm.schedmd.com/sbatch.html).
 
-7. Review the quality of the sequencing data in the MultiQC report in the `doc/fastqc1_output`. The multiqc script looks something like this: 
+7. Review the quality of the sequencing data in the MultiQC report in the `doc/fastqc1_output`. The multiqc output gives a nice summary of all the sequences analyzed and looks something like this: 
 
- INSERT MULTIQC HTML LINK OR SCREEN SHOT
+ <img width="1289" alt="Screen Shot 2023-12-06 at 11 46 09 AM" src="https://github.com/bneeland3/Group-6-Metagenomic-Pipeline/assets/104112036/7a66b174-820f-48bb-81fd-222d12cf5d55">
+
 
 
 # Updates:
