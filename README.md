@@ -28,6 +28,7 @@ Major Goals:
         conda init
         (or)
         mamba init
+4. If mamba or conda is installed but it is not working it is best to try source ~/.bashrc in order to run mamba or conda. 
 3. Setup metagenomic pipeline environment by running the following from your main directory:
 
         conda env create -f env/quality.yaml
