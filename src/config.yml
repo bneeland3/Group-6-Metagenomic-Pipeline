@@ -2,13 +2,13 @@
 ### modify these paths for each computer setup each time
 
 main_dir:
-  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/
+  /Users/saba2735/Sahana/Group-6-Metagenomic-Pipeline/
 data_dir:
-  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/
+  /Users/saba2735/Sahana/Group-6-Metagenomic-Pipeline/doc/data/
 out_dir:
-  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/
+  /Users/saba2735/Sahana/Group-6-Metagenomic-Pipeline/doc/
 sample_IDs:
-  /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/sample_names.txt
+  /Users/saba2735/Sahana/Group-6-Metagenomic-Pipeline/doc/data/sample_names.txt
 
 ### Edit for your specific trimming settings:
 
@@ -17,7 +17,7 @@ sample_IDs:
 #adapters:
 #  ILLUMINACLIP:/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/adapters.fasta:2:30:10 SLIDINGWINDOW
 
-sliding_window: 4:20
+sliding_window =  4:20
 leading: 10
 trailing: 10
 min_length: 50
@@ -25,7 +25,7 @@ trim_threads: 1
 
 ### Edit for fastqc2 (after trimming step) settings:
 trimmed_files:
- /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/trimmed_output/
+  /Users/saba2735/Sahana/Group-6-Metagenomic-Pipeline/doc/trimmed_output/
 
 
 
