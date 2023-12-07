@@ -13,12 +13,17 @@ samples=read_sample_names(f"{config.sample_IDs}")
 
 rule all:
     input:
+    #fastqc1 output
         expand(f"{config.out_dir}fastqc1_results/{{sample}}.denovo_duplicates_marked.trimmed.1_fastqc.html", sample=samples),
         f"{config.out_dir}fastqc1_results/multiqc_report.html",
+    #trimmomatic output
         expand(f"{config.out_dir}trimmed_output/{{sample}}/{{sample}}.trimmed_1P", sample=samples),
         expand(f"{config.out_dir}trimmed_output/{{sample}}/{{sample}}.trimmed_2P", sample=samples),
         expand(f"{config.out_dir}trimmed_output/{{sample}}/{{sample}}.trimmed_1U", sample=samples),
         expand(f"{config.out_dir}trimmed_output/{{sample}}/{{sample}}.trimmed_2U", sample=samples),
+    #fastqc2 output
+        expand(f"{config.out_dir}fastqc2_results/{{sample}}.trimmed_1P_fastqc.html", sample=samples),
+        f"{config.out_dir}fastqc2_results/multiqc_report.html",
 
 rule fastqc:
     input:
@@ -63,7 +68,7 @@ rule trimmomatic:
         u2=f"{config.out_dir}trimmed_output/{{sample}}/{{sample}}.trimmed_2U"
     conda:"trimmomatic"
     params:
-        adapters=config.adapters,
+        #adapters=config.adapters,
         swindow=config.sliding_window,
         leading=config.leading,
         trailing=config.trailing,
@@ -78,6 +83,37 @@ rule trimmomatic:
             -summary {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trim.log \
             -validatePairs {config.data_dir}{wildcards.sample}.denovo_duplicates_marked.trimmed.1.fastq {config.data_dir}{wildcards.sample}.denovo_duplicates_marked.trimmed.2.fastq \
             -baseout {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trimmed \
-            {params.adapters}:{params.swindow} LEADING:{params.leading} TRAILING:{params.trailing} MINLEN:{params.minlen} \
+            SLIDINGWINDOW:4:20 LEADING:{params.leading} TRAILING:{params.trailing} MINLEN:{params.minlen} \
             || echo {wildcards.sample} >> {config.out_dir}trimmed_output/failures.txt
+        """
+
+rule fastqc2:
+    input:
+        P1=f"{config.trimmed_files}{{sample}}/{{sample}}.trimmed_1P",
+        P2=f"{config.trimmed_files}{{sample}}/{{sample}}.trimmed_2P"
+    output:
+        html1=f"{config.out_dir}fastqc2_results/{{sample}}.trimmed_1P_fastqc.html",
+        zip1=f"{config.out_dir}fastqc2_results/{{sample}}.trimmed_1P_fastqc.zip",
+        html2=f"{config.out_dir}fastqc2_results/{{sample}}.trimmed_2P_fastqc.html",
+        zip2=f"{config.out_dir}fastqc2_results/{{sample}}.trimmed_2P_fastqc.zip"
+    conda: "quality"
+    shell:
+        """
+        mkdir -p {config.out_dir}fastqc2_results
+        fastqc {input.P1} --outdir {config.out_dir}fastqc2_results/
+        fastqc {input.P2} --outdir {config.out_dir}fastqc2_results/
+        """
+
+rule multiqc2:
+    input:
+        html1=expand(f"{config.out_dir}fastqc2_results/{{sample}}.trimmed_1P_fastqc.html", sample=samples),
+        html2=expand(f"{config.out_dir}fastqc2_results/{{sample}}.trimmed_2P_fastqc.html", sample=samples)
+    output:
+        html=f"{config.out_dir}fastqc2_results/multiqc_report.html",
+        data=directory(f"{config.out_dir}fastqc2_results/multiqc_data")
+    conda: "quality"
+    shell:
+        """
+        cd {config.out_dir}fastqc2_results
+        multiqc .
         """

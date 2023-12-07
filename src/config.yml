@@ -17,10 +17,15 @@ sample_IDs:
 #adapters:
 #  ILLUMINACLIP:/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/adapters.fasta:2:30:10 SLIDINGWINDOW
 
-# use this parameter if your adapters have already been removed
-adapters: SLIDINGWINDOW
 sliding_window: 4:20
 leading: 10
 trailing: 10
 min_length: 50
 trim_threads: 1
+
+### Edit for fastqc2 (after trimming step) settings:
+trimmed_files:
+ /Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/trimmed_output/
+
+
+
