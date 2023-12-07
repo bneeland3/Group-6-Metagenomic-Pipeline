@@ -83,7 +83,7 @@ rule trimmomatic:
             -summary {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trim.log \
             -validatePairs {config.data_dir}{wildcards.sample}.denovo_duplicates_marked.trimmed.1.fastq {config.data_dir}{wildcards.sample}.denovo_duplicates_marked.trimmed.2.fastq \
             -baseout {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trimmed \
-            SLIDINGWINDOW:4:20 LEADING:{params.leading} TRAILING:{params.trailing} MINLEN:{params.minlen} \
+            SLIDINGWINDOW:{params.swindow} LEADING:{params.leading} TRAILING:{params.trailing} MINLEN:{params.minlen} \
             || echo {wildcards.sample} >> {config.out_dir}trimmed_output/failures.txt
         """
 
