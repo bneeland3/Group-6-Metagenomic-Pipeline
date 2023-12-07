@@ -45,6 +45,8 @@ Major Goals:
 
         --SRS014466.denovo_duplicates_marked.trimmed.1.fastq
         --SRS014466.denovo_duplicates_marked.trimmed.2.fastq
+        --SRS023534.denovo_duplicates_marked.trimmed.1.fastq
+        --SRS023534.denovo_duplicates_marked.trimmed.2.fastq
     
     If these did not download simply run the following from the main repo to download demo data. 
 
