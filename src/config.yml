@@ -17,7 +17,7 @@ sample_IDs:
 #adapters:
 #  ILLUMINACLIP:/Users/emye7956/research/projects/Group-6-Metagenomic-Pipeline/doc/data/adapters.fasta:2:30:10 SLIDINGWINDOW
 
-sliding_window =  4:20
+sliding_window: "4:20"
 leading: 10
 trailing: 10
 min_length: 50
