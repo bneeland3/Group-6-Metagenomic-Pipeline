@@ -1,15 +1,20 @@
-import sys  # import sys
-sys.path.insert(0, '../../src')  # noqa #set up a path using sys
 import unittest
-import fire_gdp
-import random
 
-#Need to fix up this file
+# Your read_sample_names function definition here
+def read_sample_names(filename):
+    with open(filename, 'r') as file:
+        return [line.strip().split('.')[0].split('_')[0] for line in file]
 
-class Snakemake(unittest.TestCase):
-    def test_search(self):
-        self.assertEqual(fire_gdp.search([1, 2, 3, 4, 5], 3), 2)
-        self.assertEqual(fire_gdp.search([], 5), None)
-        self.assertEqual(fire_gdp.search([1, 2, 3, 4, 5, 6, 7, 9],
-                                         10000), None)
+class TestReadSampleNames(unittest.TestCase):
+    def test_read_sample_names(self):
+        # Prepare a test sample_names.txt file with some sample names
+        with open("sample_names.txt", "w") as file:
+            file.write("sample1_file.fastq\nsample2_file.fastq\nsample3_file.fastq")
+
+        # Test if read_sample_names function extracts sample names correctly
+        samples = read_sample_names("sample_names.txt")
+        self.assertEqual(samples, ["sample1", "sample2", "sample3"])
+
+if __name__ == "__main__":
+    unittest.main()
        
