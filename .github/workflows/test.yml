@@ -1,4 +1,4 @@
-name: Unit Tests + Pycodestyle
+name: Unit/Functional/Pycodestyle Tests
 
 on:
   pull_request:
@@ -47,5 +47,5 @@ jobs:
       - uses: mamba-org/setup-micromamba@v1
       - run: |
          pwd
-         cd /test/Functional_test
+         cd test/Functional_test
          bash test.sh
