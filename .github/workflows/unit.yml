@@ -1,1 +1,23 @@
+name: Unit Tests
 
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:  
+  run_unit_tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+           environment-name: quality
+           environment-file: /env/quality.yaml
+      - run: |
+         cd unit_tests
+         python -m unittest test_my_utils
