@@ -4,11 +4,6 @@ import unittest
 sys.path.insert(0, '../../src')  # noqa
 
 
-def read_sample_names(filename):
-    with open(filename, 'r') as file:
-        return [line.strip().split('.')[0].split('_')[0] for line in file]
-
-
 class TestReadSampleNames(unittest.TestCase):
     def test_read_sample_names(self):
         # Prepare a test sample_names.txt file with some sample names
