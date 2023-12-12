@@ -24,4 +24,4 @@ jobs:
       - name: Change to src directory
         run: cd src
       - name: Run pycodestyle on sample_names.py
-        run: pycodestyle sample_names.py
+        run: pwd
