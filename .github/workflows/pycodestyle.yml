@@ -16,5 +16,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: mamba-org/setup-micromamba@v1
       - run: |
-             cd ../src
+             cd src
              pycodestyle $(git ls-files "*.py")
