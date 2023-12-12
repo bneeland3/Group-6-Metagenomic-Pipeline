@@ -6,7 +6,17 @@ on:
   pull_request:
     branches: [main]
 
-jobs:  
+jobs:
+  run_pycodestyle:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mamba-org/setup-micromamba@v1
+      - run: pip install pycodestyle
+  
   run_style_check:
     runs-on: ubuntu-latest
     defaults:
