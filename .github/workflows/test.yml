@@ -36,3 +36,15 @@ jobs:
           cd src
           pycodestyle sample_names.py
           pycodestyle download_test_data.py
+          
+  run_functional_tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mamba-org/setup-micromamba@v1
+      - run: |
+         cd ../test/Functional_test
+         bash test.sh
