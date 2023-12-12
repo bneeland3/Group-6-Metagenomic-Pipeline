@@ -15,9 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: mamba-org/setup-micromamba@v1
-        with:
-           environment-name: quality
-           environment-file: ~/env/quality.yml
       - run: |
              cd ../src
              pycodestyle $(git ls-files "*.py")
