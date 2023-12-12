@@ -25,3 +25,5 @@ jobs:
         run: | 
           cd src
           pwd
+          pycodestyle sample_names.py
+          pycodestyle download_test_data.py
