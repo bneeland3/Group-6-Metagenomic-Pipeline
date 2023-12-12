@@ -1,8 +1,6 @@
 name: Unit Tests
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -15,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: mamba-org/setup-micromamba@v1
-        with:
-           environment-name: quality
-           environment-file: /env/quality.yaml
       - run: |
          cd ../test/Unit_test
          python -m unittest test_my_utils
