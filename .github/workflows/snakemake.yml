@@ -23,4 +23,4 @@ jobs:
       run: pip install snakemake
 
     - name: Run Snakemake
-      run: snakemake --dry_run
+      run: snakemake --dry-run
