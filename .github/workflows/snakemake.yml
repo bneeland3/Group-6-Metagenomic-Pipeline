@@ -23,7 +23,7 @@ jobs:
       run: pip install snakemake
 
     - name: Run Snakemake
-      run: snakemake --use-conda
+      run: snakemake -c1 --use-conda
 
 
 
