@@ -1,15 +1,10 @@
 import os
 import sys
-sys.path.insert(0, '../../src')  # noqa #set up a path using sys
-import sample_names.py
-from sample_names.py import read_sample_names
 from types import SimpleNamespace
-fig = SimpleNamespace(**config)
+config = SimpleNamespace(**config)
+sys.path.insert(0, '../../src')  # noqa #set up a path using sys
 
-rule read_samples: 
-...
-    run: 
-       read_sample_names()
+from read_sample_names import read_sample_names
 
 # Read sample names from "sample_names.txt" made using src/sample_names.py prior to snakemake
 samples=read_sample_names(f"{config.sample_IDs}")
