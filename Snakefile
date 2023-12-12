@@ -2,7 +2,7 @@ import os
 import sys
 from types import SimpleNamespace
 config = SimpleNamespace(**config)
-sys.path.insert(0, '../../src')  # noqa #set up a path using sys
+sys.path.insert(0, '/src')  # noqa #set up a path using sys
 
 from read_sample_names import read_sample_names
 
