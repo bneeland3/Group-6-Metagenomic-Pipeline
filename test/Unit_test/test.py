@@ -11,7 +11,7 @@ from read_sample_names import read_sample_names
 class TestReadSampleNames(unittest.TestCase):
     def test_read_sample_names(self):
         # Prepare a test sample_names.txt file with some sample names
-        data_dir = os.path.join(os.path.dirname(__file__))  # Assuming the file is in the same directory as the test script
+        data_dir = os.path.join(os.path.dirname(__file__))
         test_file_path = os.path.join(data_dir, "sample_names.txt")
 
         with open(test_file_path, "w") as file:
