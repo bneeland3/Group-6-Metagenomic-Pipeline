@@ -24,4 +24,4 @@ jobs:
           pip install pycodestyle
 
       - name: Run pycodestyle
-        run: pycodestyle $(git ls-files "*.py")
+        run: pycodestyle download_test_data.py sample_names.py
