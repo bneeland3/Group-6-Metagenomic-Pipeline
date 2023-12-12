@@ -1,4 +1,7 @@
+import sys
 import unittest
+
+sys.path.insert(0, '../../src')  # noqa
 
 def read_sample_names(filename):
     with open(filename, 'r') as file:
