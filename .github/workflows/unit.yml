@@ -15,4 +15,4 @@ jobs:
       - uses: mamba-org/setup-micromamba@v1
       - run: |
          cd test/Unit_test
-         python -m unittest test_my_utils
+         python -m unittest test
