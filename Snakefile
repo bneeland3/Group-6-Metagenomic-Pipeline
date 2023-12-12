@@ -8,8 +8,8 @@ fig = SimpleNamespace(**config)
 
 rule read_samples: 
 ...
-	run: 
-	   read_sample_names()
+    run: 
+       read_sample_names()
 
 # Read sample names from "sample_names.txt" made using src/sample_names.py prior to snakemake
 samples=read_sample_names(f"{config.sample_IDs}")
