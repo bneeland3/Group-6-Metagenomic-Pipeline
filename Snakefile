@@ -1,11 +1,21 @@
 import os
-import sys
 from types import SimpleNamespace
 config = SimpleNamespace(**config)
-sys.path.insert(0, '/src')  # noqa #set up a path using sys
 
-from read_sample_names import read_sample_names
-
+# extract only the part of the sample name before the first "." or "_".
+def read_sample_names(filename):
+    '''
+    Function opens a file and read sample names from the file
+    Parameters
+    ----------
+    filename : str
+        str input containing desired sample names
+    Returns
+    -------
+        returns lines containing split up names in the file
+    '''
+    with open(filename, 'r') as file:
+        return [line.strip().split('.')[0].split('_')[0] for line in file]
 # Read sample names from "sample_names.txt" made using src/sample_names.py prior to snakemake
 samples=read_sample_names(f"{config.sample_IDs}")
 
