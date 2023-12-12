@@ -19,5 +19,5 @@ jobs:
            environment-name: quality
            environment-file: /env/quality.yaml
       - run: |
-         cd unit_tests
+         cd ../test/Unit_test
          python -m unittest test_my_utils
