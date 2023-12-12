@@ -3,7 +3,6 @@ from types import SimpleNamespace
 config = SimpleNamespace(**config)
 
 # extract only the part of the sample name before the first "." or "_".
-# THIS FUNCTION NEEDS A NEAT DEFINITION? 
 def read_sample_names(filename):
     '''
     Function opens a file and read sample names from the file
