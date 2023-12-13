@@ -5,7 +5,7 @@ import unittest
 sys.path.insert(0, '../../src')  # noqa
 sys.path.insert(0, '../../doc/data')  # noqa
 
-from read_sample_names import read_sample_names
+from snakemake_utils import read_sample_names
 
 
 class TestReadSampleNames(unittest.TestCase):
