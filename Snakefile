@@ -1,6 +1,11 @@
 import os
+import pandas as pd
+from os.path import join as pj
+from os.path import split
 from types import SimpleNamespace
 config = SimpleNamespace(**config)
+import pandas as pd
+from src.snakemake_utils import read_sample_names, remove_adapters
 
 # extract only the part of the sample name before the first "." or "_".
 def read_sample_names(filename):
@@ -76,7 +81,7 @@ rule trimmomatic:
         u2=f"{config.out_dir}trimmed_output/{{sample}}/{{sample}}.trimmed_2U"
     conda:"trimmomatic"
     params:
-        #adapters=config.adapters,
+        adapters=remove_adapters("no", config, "trimmomatic"),
         swindow=config.sliding_window,
         leading=config.leading,
         trailing=config.trailing,
@@ -91,7 +96,7 @@ rule trimmomatic:
             -summary {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trim.log \
             -validatePairs {config.data_dir}{wildcards.sample}.denovo_duplicates_marked.trimmed.1.fastq {config.data_dir}{wildcards.sample}.denovo_duplicates_marked.trimmed.2.fastq \
             -baseout {config.out_dir}trimmed_output/{wildcards.sample}/{wildcards.sample}.trimmed \
-            SLIDINGWINDOW:{params.swindow} LEADING:{params.leading} TRAILING:{params.trailing} MINLEN:{params.minlen} \
+            SLIDINGWINDOW:{params.swindow} LEADING:{params.leading} TRAILING:{params.trailing} MINLEN:{params.minlen}{params.adapters}\
             || echo {wildcards.sample} >> {config.out_dir}trimmed_output/failures.txt
         """
 
