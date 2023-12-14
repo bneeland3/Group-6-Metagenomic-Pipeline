@@ -16,15 +16,33 @@ def read_sample_names(filename):
 
 
 def remove_adapters(default, config, rule_name):
-    # First, check the config for a rule-specific adapters
-    config_param = "trimmomatic_adapters"
-    if config_param is not None:
-        return config_param
-    # Then, check the config for a different default adapter name
-    # This looks for default_no_adapters.
-    config_diff_default = "default_noq_adapters"
+    '''
+    Determines if adapters need removal based on configuration parameters.
+
+    Parameters
+    ----------
+    default : str
+        Default no adapter removal.
+    config : dict
+        Dictionary containing configuration parameters.
+    rule_name : str
+        Name of the rule.
+
+    Returns
+    -------
+    str
+        Adapter name to be used.
+    '''
+    config_param_none = "# trimmomatic_adapters"
+    config_param_yes = "trimmomatic_adapters"
+    config_diff_default = "default_no_adapters"
+    config_no_adapters = " "
+    
+    if config_param_none is None:
+        return config_param_yes
+
     if config_diff_default is not None:
-        return config_diff_default
+        return config_no_adapters
     
     # If there's nothing in the config, use what's in the snakefile
     return default
